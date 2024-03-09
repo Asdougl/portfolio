@@ -1,0 +1,24 @@
+---
+export type Props = {
+  id: string;
+  title: string;
+  subtitle?: string;
+};
+---
+
+<section class="container relative mx-auto flex flex-col gap-6">
+  <div id={Astro.props.id} class="invisible absolute -top-24"></div>
+  <div class="pb-2">
+    <h2 class="px-4 text-center text-4xl font-bold underline">
+      {Astro.props.title}
+    </h2>
+    {
+      Astro.props.subtitle && (
+        <p class="px-4 text-center text-lg italic text-tertiary-2">
+          {Astro.props.subtitle}
+        </p>
+      )
+    }
+  </div>
+  <slot />
+</section>

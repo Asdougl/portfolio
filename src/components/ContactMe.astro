@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import github from '~/assets/icons/github-mark.svg';
+import linkedin from '~/assets/icons/linkedin-mark.png';
+import { ContactForm } from './ContactForm';
+---
+
+<div class="flex flex-col gap-8">
+  <div
+    class="mx-auto flex items-center justify-center rounded border border-tertiary-5"
+  >
+    <a
+      href="https://github.com/asdougl/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex flex-1 items-center justify-center gap-2 rounded px-4 py-2 hover:bg-accent"
+    >
+      <Image src={github} alt="GitHub" height={18} width={18} /> Github
+    </a>
+    <a
+      href="https://www.linkedin.com/in/cameron-burrows-64b1a9192"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex flex-1 items-center justify-center gap-2 rounded px-4 py-2 hover:bg-accent"
+    >
+      <Image src={linkedin} alt="Linkedin" height={24} width={24} /> Linkedin
+    </a>
+  </div>
+  <ContactForm client:visible />
+</div>

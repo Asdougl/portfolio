@@ -1,0 +1,79 @@
+---
+import {
+  format,
+  differenceInMonths,
+  differenceInYears,
+  formatDuration,
+} from 'date-fns';
+import { clsx } from 'clsx';
+
+export type Props = {
+  company: string;
+  title: string;
+  from: { month: number; year: number };
+  to?: { month: number; year: number };
+  pos: 'first' | 'last' | null;
+  description?: string;
+};
+
+const fromDate = new Date(Astro.props.from.year, Astro.props.from.month, 1);
+const toDate = Astro.props.to
+  ? new Date(Astro.props.to.year, Astro.props.to.month, 1)
+  : new Date();
+
+const durationMonths = differenceInMonths(toDate, fromDate) % 12;
+const durationYears = Math.floor(differenceInYears(toDate, fromDate));
+
+const duration = formatDuration({
+  years: durationYears,
+  months: durationMonths,
+});
+---
+
+<div class="flex gap-3">
+  <div class="flex flex-col items-center gap-1">
+    <div
+      class={clsx(
+        'w-0.5 h-1 bg-tertiary-3',
+        Astro.props.pos !== 'first' ? 'bg-tertiary-3' : 'bg-transparent'
+      )}
+    >
+    </div>
+    <div class="h-4 w-4 rounded-full bg-tertiary-1"></div>
+    <div
+      class={clsx(
+        'w-0.5 h-12 flex-grow',
+        Astro.props.pos !== 'last' ? 'bg-tertiary-3' : 'bg-transparent'
+      )}
+    >
+    </div>
+  </div>
+  <div class="flex flex-col pb-8">
+    <div class="flex items-baseline gap-2">
+      <div class="text-2xl font-bold">{Astro.props.title}</div>
+      <div class="text-lg text-tertiary-2">
+        {Astro.props.company}
+      </div>
+    </div>
+    <div class="pl-1">
+      <div
+        class="flex items-center justify-start gap-2 text-sm italic text-tertiary-2"
+      >
+        <span
+          >{format(fromDate, 'MMM yyyy')} - {
+            Astro.props.to ? format(toDate, 'MMM yyyy') : 'Present'
+          }</span
+        >
+        <span>&bull;</span>
+        <span>{duration}</span>
+      </div>
+      {
+        Astro.props.description && (
+          <p class="max-w-lg pb-2 pt-1 text-justify">
+            {Astro.props.description}
+          </p>
+        )
+      }
+    </div>
+  </div>
+</div>

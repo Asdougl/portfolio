@@ -1,0 +1,96 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Hero from '~/components/Hero.astro';
+import Project from '~/components/Project.astro';
+import { PROJECTS } from '~/data/projects';
+import Technologies from '~/components/Technologies.astro';
+import WorkHistory from '~/components/WorkHistory.astro';
+import Section from '~/components/Section.astro';
+import ContactMe from '~/components/ContactMe.astro';
+
+const workHistory = [
+  {
+    title: 'Tech Lead',
+    company: 'Cluey Learning',
+    location: 'Sydney, NSW, Australia',
+    from: { month: 1, year: 2022 },
+    description:
+      'Guiding the frontend team to build human scalable frontend solution that we help us build faster and better. Building code quality and review processes to ensure a high standard of code is maintained without reducing developer velocity. Planning large scale technology changes and building plans for incremental adoption to reduce risk and increase success.',
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'Cluey Learning',
+    location: 'Sydney, NSW, Australia',
+    from: { month: 4, year: 2021 },
+    to: { month: 1, year: 2022 },
+    description:
+      'Extending and maintaining the frontend self service platform for students and parents to manage their learning journey. Helping to implement new development practices and technologies to improve the development process.',
+  },
+  {
+    title: 'Web Developer',
+    company: 'SwitchLink / MyPOS',
+    location: 'Roseville, NSW, Australia',
+    from: { month: 8, year: 2019 },
+    to: { month: 4, year: 2021 },
+    description:
+      'Building an online e-commerce platform for small businesses that connects directly to their POS system. Designing and implementing a digital signage solution to be deployed in store and connected to the POS system.',
+  },
+];
+---
+
+<Layout title="Cameron Burrows">
+  <div class="min-h-screen">
+    <Hero />
+    <main class="flex flex-col gap-24 px-4 py-24 lg:gap-32 lg:py-32">
+      <!-- Projects -->
+      <Section
+        id="projects"
+        title="Projects"
+        subtitle="Some of the personal projects I have recently worked on"
+      >
+        <div class="grid gap-4 xl:grid-cols-2">
+          {PROJECTS.map((project) => <Project {...project} />)}
+        </div>
+      </Section>
+      <!-- Working History -->
+      <Section
+        id="experience"
+        title="Experience"
+        subtitle="Where I have worked and what I have done there"
+      >
+        <div class="mx-auto flex max-w-xl flex-col">
+          {
+            workHistory.map((job, index, arr) => (
+              <WorkHistory
+                pos={
+                  index === 0
+                    ? 'first'
+                    : index === arr.length - 1
+                      ? 'last'
+                      : null
+                }
+                {...job}
+              />
+            ))
+          }
+        </div>
+      </Section>
+      <!-- Technologies -->
+      <Section
+        id="technologies"
+        title="Technologies"
+        subtitle="The tech I am most experienced with, in no particular order"
+      >
+        <Technologies />
+      </Section>
+      <!-- Contact Me -->
+      <Section
+        id="contact-me"
+        title="Contact Me"
+        subtitle="If you would like to get in touch, please feel free to reach out"
+      >
+        <ContactMe />
+      </Section>
+    </main>
+  </div>
+</Layout>

@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+
+// IMAGES
+import typescript from '~/assets/icons/typescript-mark.png';
+import react from '~/assets/icons/react-mark.svg';
+import nextjs from '~/assets/icons/next-js-mark.svg';
+import tailwind from '~/assets/icons/tailwind-css-mark.svg';
+import astro from '~/assets/icons/astro-mark.png';
+import css from '~/assets/icons/css-mark.png';
+import html from '~/assets/icons/html-mark.png';
+import javascript from '~/assets/icons/javascript-mark.png';
+import nodejs from '~/assets/icons/node-js-mark.svg';
+import mysql from '~/assets/icons/mysql-mark.png';
+import postgresql from '~/assets/icons/postgresql-mark.svg';
+import prisma from '~/assets/icons/prisma-mark.svg';
+import github from '~/assets/icons/github-mark.svg';
+import bitbucket from '~/assets/icons/bitbucket-mark.svg';
+import jest from '~/assets/icons/jest-mark.svg';
+import vite from '~/assets/icons/vite-js-mark.svg';
+import webpack from '~/assets/icons/webpack-mark.svg';
+import php from '~/assets/icons/php-mark.png';
+
+const TECH = [
+  {
+    name: 'TypeScript',
+    icon: typescript,
+    link: 'https://www.typescriptlang.org/',
+  },
+  {
+    name: 'React',
+    icon: react,
+    link: 'https://react.dev/',
+  },
+  {
+    name: 'Next.js',
+    icon: nextjs,
+    link: 'https://nextjs.org/',
+  },
+  {
+    name: 'Tailwind CSS',
+    icon: tailwind,
+    link: 'https://tailwindcss.com/',
+  },
+  {
+    name: 'Astro',
+    icon: astro,
+    link: 'https://astro.build/',
+  },
+  {
+    name: 'CSS',
+    icon: css,
+    link: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+  },
+  {
+    name: 'HTML',
+    icon: html,
+    link: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+  },
+  {
+    name: 'JavaScript',
+    icon: javascript,
+    link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+  },
+  {
+    name: 'Node.js',
+    icon: nodejs,
+    link: 'https://nodejs.org/',
+  },
+  {
+    name: 'MySQL',
+    icon: mysql,
+    link: 'https://www.mysql.com/',
+  },
+  {
+    name: 'PostgreSQL',
+    icon: postgresql,
+    link: 'https://www.postgresql.org/',
+  },
+  {
+    name: 'Prisma',
+    icon: prisma,
+    link: 'https://www.prisma.io/',
+  },
+  {
+    name: 'GitHub',
+    icon: github,
+    link: 'https://www.github.com/',
+  },
+  {
+    name: 'Bitbucket',
+    icon: bitbucket,
+    link: 'https://www.bitbucket.org/',
+  },
+  {
+    name: 'Jest',
+    icon: jest,
+    link: 'https://jestjs.io/',
+  },
+  {
+    name: 'Vite',
+    icon: vite,
+    link: 'https://vitejs.dev/',
+  },
+  {
+    name: 'Webpack',
+    icon: webpack,
+    link: 'https://webpack.js.org/',
+  },
+  {
+    name: 'PHP',
+    icon: php,
+    link: 'https://www.php.net/',
+  },
+];
+---
+
+<div
+  class="grid grid-cols-2 place-items-center gap-4 md:grid-cols-4 xl:grid-cols-6"
+>
+  {
+    TECH.map((tech) => (
+      <a
+        href={tech.link}
+        target="_blank"
+        class="group flex w-28 flex-col items-center gap-2 rounded-lg bg-accent px-2 py-4 transition-colors hover:bg-opacity-80"
+      >
+        <div class="flex h-12 w-12 items-center justify-center p-1">
+          <Image
+            src={tech.icon}
+            alt={tech.name}
+            height={64}
+            width={64}
+            class="h-10 w-10 rounded object-contain"
+          />
+        </div>
+        <div class="text-tertiary-2 transition-colors group-hover:text-tertiary-1 group-hover:underline">
+          {tech.name}
+        </div>
+      </a>
+    ))
+  }
+</div>

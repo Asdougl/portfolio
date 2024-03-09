@@ -1,0 +1,50 @@
+export const AIRPORTS = [
+  // europe
+  'LHR',
+  'GLA',
+  'LGW',
+  'CDG',
+  'AMS',
+  'FRA',
+  'FCO',
+  'BUD',
+  'HEL',
+  'HAM',
+  'ZRH',
+  'LIS',
+  'MAD',
+  'BCN',
+  'JTR',
+  'ATH',
+  // north america
+  'LAX',
+  'JFK',
+  'HNL',
+  'KOA',
+  'YYZ',
+  'IAH',
+  'MCO',
+  'BOS',
+  // asia
+  'DIA',
+  'DXB',
+  'SGN',
+  'HAN',
+  'REP',
+  'VDH',
+  'HKG',
+  'SIN',
+  // oceania
+  'SUV',
+  'VLI',
+  'AKL',
+  'BNE',
+  'MEL',
+];
+
+export const NAV_ITEMS = [
+  { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Technologies', href: '#technologies' },
+  { label: 'Contact Me', href: '#contact-me' },
+];
